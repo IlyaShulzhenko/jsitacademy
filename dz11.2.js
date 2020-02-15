@@ -2,22 +2,22 @@ class HashStorageFuncs{
     constructor(){
         this.hash={};
         let addValue = function(key, value){
-        return this.hash[key] = value;
+            return this.hash[key] = value;
         };
     
         let getValue = function(key){
-        return this.hash[key];
+            return this.hash[key];
         };
     
         let deleteValue = function(key){
             if(!(key in this.hash[key])){
             return false;
         }
-        return delete this.hash[key];
+            return delete this.hash[key];
         };
     
         let getKeys = function(){
-        return this.hash[key];
+            return this.hash[key];
         };
     }
 }
@@ -34,9 +34,9 @@ class HeirTwo extends HashStorageFuncs{
 }
     rating (key){
         if(key<10){ 
-        return alert('good');
+            return alert('good');
         } else {
-        return alert('bad');
+            return alert('bad');
         }
     }
 }
