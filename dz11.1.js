@@ -21,9 +21,10 @@ function HashStorageFuncs(){
 }
 let HashStorageFunc = new HashStorageFuncs(key,value);
 
+
+HeirOne.prototype = Object.create(HashStorageFuncs.prototype);
+HeirOne.prototype.constructor = HeirOne;
 function HeirOne(){
-    HeirOne.prototype = Object.create(HashStorageFuncs.prototype);
-    HeirOne.prototype.constructor = HeirOne;
     HeirOne.prototype.getValue = function(){
         HashStorageFuncs.prototype.getValue.apply(this,key);
         this.display = function(key,value){
@@ -35,21 +36,19 @@ function HeirOne(){
 let one = new HeirOne(key,value);
 
 
-
+HeirTwo.prototype = Object.create(HashStorageFuncs.prototype);
+HeirTwo.prototype.constructor = HeirTwo;
 function HeirTwo(){
-    HeirTwo.prototype = Object.create(HashStorageFuncs.prototype);
-    HeirTwo.prototype.constructor = HeirTwo;
     HeirOne.prototype.getValue = function(){
     HashStorageFuncs.prototype.getValue.apply(this,key);
-        this.rating = function(key){
-            if(key<10){ 
-            return alert('good');
-            } else {
-            return alert('bad');
-            };
+        if(key<10){ 
+        return alert('good');
+        } else {
+        return alert('bad');
         };
     };
-}
+};
+
 let two = new HeirTwo(key)
 
 
