@@ -43,4 +43,4 @@ class HeirTwo extends HashStorageFuncs{
 
 let two = new HeirTwo();
     
-    
+// добавить наследование
