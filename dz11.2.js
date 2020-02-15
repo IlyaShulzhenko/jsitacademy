@@ -11,7 +11,7 @@ class HashStorageFuncs{
     
         let deleteValue = function(key){
             if(!(key in this.hash[key])){
-            return false
+            return false;
         }
         return delete this.hash[key];
         };
@@ -23,9 +23,7 @@ class HashStorageFuncs{
 }
 
 class HeirOne extends HashStorageFuncs{
-    constructor(){
-    super()
-    }
+}
     display (key,value){
         return alert(key,value);
     }
@@ -33,9 +31,7 @@ class HeirOne extends HashStorageFuncs{
 let one = new HeirOne();
 
 class HeirTwo extends HashStorageFuncs{
-    constructor(){
-    super()
-    }
+}
     rating (key){
         if(key<10){ 
         return alert('good');
