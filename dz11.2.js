@@ -26,19 +26,18 @@ class HeirOne extends HashStorageFuncs{
 }
     display (key,value){
         return alert(key,value);
-    }
+    };
 }
 let one = new HeirOne();
 
 class HeirTwo extends HashStorageFuncs{
-}
-    rating (key){
+    getValue(){
         if(key<10){ 
             return alert('good');
         } else {
             return alert('bad');
-        }
-    }
+        };
+    };
 }
 
 let two = new HeirTwo();
