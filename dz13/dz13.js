@@ -38,7 +38,7 @@ function render(parentElment, elementObject) {
         if (element.kind === 'longtext' || element.kind === 'shorttext'){
             let inputRender = document.createElement('div');
 
-            if (element.kind == 'shorttext'){
+            if (element.kind === 'shorttext'){
                 inputRender = document.createElement('div');
                 inputRender = renderInput('text', element.name, true);
             } else {
@@ -56,22 +56,22 @@ function render(parentElment, elementObject) {
             
             label.appendChild(inputRender);
             parentElment.appendChild(label);
-        } else if (element.kind == 'radio') {
+        } else if (element.kind === 'radio') {
             let radioButtons = document.createElement('div');
             radioButtons = renderRadio(element.kind, element.label, element.name, element.variants);
     
             parentElment.appendChild(radioButtons);
-        } else if (element.kind == 'check') {
+        } else if (element.kind === 'check') {
             let checkbox = document.createElement('div');
             checkbox = renderCheckobox(element.kind, element.label, element.name, element.variants);
 
             parentElment.appendChild(checkbox);
-        } else if (element.kind == 'memo') {
+        } else if (element.kind === 'memo') {
             let memo = document.createElement('div');
             memo = renderTextArea(element);
 
             parentElment.appendChild(memo);
-        } else if (element.kind == 'submit') {
+        } else if (element.kind === 'submit') {
             let submit = document.createElement('div');
             submit = renderSubmit(element);
 
