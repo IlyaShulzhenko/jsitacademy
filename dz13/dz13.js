@@ -39,11 +39,9 @@ function render(parentElment, elementObject) {
             let inputRender = document.createElement('div');
 
             if (element.kind === 'shorttext'){
-                inputRender = document.createElement('div');
-                inputRender = renderInput('text', element.name, true);
+                inputRender = renderInput('text', element.name, true);        убрать true false и проверить в функции, плибо передать третьим параметром объект        
             } else {
-                inputRender = document.createElement('div');
-                inputRender = renderInput('text', element.name);
+                inputRender = renderInput('text', element.name);  
             }
 
             const label = renderLabel(element.name, element.label);
