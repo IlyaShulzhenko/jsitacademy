@@ -1,0 +1,10 @@
+form{
+    display: flex;
+    flex-direction: column; 
+    width: 310px; 
+    height: 210px;
+
+}
+form>*{
+    width: 100%;
+}
