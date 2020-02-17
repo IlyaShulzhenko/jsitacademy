@@ -25,7 +25,7 @@ let HashStorageFunc = new HashStorageFuncs(key,value);
 HeirOne.prototype = Object.create(HashStorageFuncs.prototype);
 HeirOne.prototype.constructor = HeirOne;
 function HeirOne(){
-    HeirOne.prototype.getValue = function(){
+//     HeirOne.prototype.getValue = function(){
         HashStorageFuncs.prototype.getValue.apply(this,key);
         this.display = function(key,value){
             return alert(key,value);
@@ -39,7 +39,7 @@ let one = new HeirOne(key,value);
 HeirTwo.prototype = Object.create(HashStorageFuncs.prototype);
 HeirTwo.prototype.constructor = HeirTwo;
 function HeirTwo(){
-    HeirOne.prototype.getValue = function(){
+//     HeirOne.prototype.getValue = function(){
         HashStorageFuncs.prototype.getValue.apply(this,key);
         if(key<10){ 
             return alert('good');
