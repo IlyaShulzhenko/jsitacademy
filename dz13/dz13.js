@@ -94,7 +94,7 @@ function renderInput (type, name) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
 
-    if (element.kind === 'shorttext') {
+    if (name === 'shorttext') {
         input.setAttribute('maxlength', 30);
     }
 
