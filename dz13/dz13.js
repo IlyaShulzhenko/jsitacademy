@@ -1,4 +1,4 @@
-llet formDef1= [
+let formDef1= [
     {label: 'Название сайта:' ,kind:'longtext', name:'sitename'},
     {label: 'URL сайта:' ,kind:'longtext', name:'siteurl'},
     {label: 'Посетителей в сутки:' ,kind:'number', name:'visitors'},
@@ -36,43 +36,41 @@ function render(parentElment, elementObject) {
     elementObject.forEach((element) => {
         
         if (element.kind === 'longtext' || element.kind === 'shorttext'){
-            let inputRender = document.createElement('div');
+            let inputRender 
+            
 
-            if (element.kind === 'longtext'){
-                inputRender = renderInput('text', element.name);               
-            if (element.kind === 'shorttext'){
-                inputRender = renderInput('text', element.name);  
+            if (element.kind === 'longtext'){ 
+                inputRender = renderInput('text', element.name);
+                
+            } else {inputRender = renderInput1('text', element.name);
             }
-
+            
             const label = renderLabel(element.name, element.label);
         
             label.appendChild(inputRender);
             parentElment.appendChild(label);
+
         } else if (element.kind === 'number') {
             const inputRender = renderInput('number', element.name);
             const label = renderLabel(element.name, element.label);
             
             label.appendChild(inputRender);
             parentElment.appendChild(label);
+
         } else if (element.kind === 'radio') {
-            let radioButtons = document.createElement('div');
-            radioButtons = renderRadio(element.kind, element.label, element.name, element.variants);
-    
+            let radioButtons = renderRadio(element.kind, element.label, element.name, element.variants);
             parentElment.appendChild(radioButtons);
+
         } else if (element.kind === 'check') {
-            let checkbox = document.createElement('div');
-            checkbox = renderCheckobox(element.kind, element.label, element.name, element.variants);
-
+            let checkbox = renderCheckobox(element.kind, element.label, element.name, element.variants);
             parentElment.appendChild(checkbox);
+
         } else if (element.kind === 'memo') {
-            let memo = document.createElement('div');
-            memo = renderTextArea(element);
-
+            let memo =renderTextArea(element);
             parentElment.appendChild(memo);
+            
         } else if (element.kind === 'submit') {
-            let submit = document.createElement('div');
-            submit = renderSubmit(element);
-
+            let submit = renderSubmit(element);
             parentElment.appendChild(submit);
         }
     });
@@ -93,22 +91,17 @@ function renderLabel(parentElement, text) {
 function renderInput (type, name) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
-       return input;
+    return input;
 }
-    
- function renderInput1 (type, name) {
+
+function renderInput1 (type, name) {
+    let input = document.createElement('input');
+    input.setAttribute('type', type);
     input.setAttribute('maxlength', 30);
-     
-       return input1;
+    return input;
 }
 
-    if (name === 'email') {
-        
-    }
-
-    input.setAttribute('name', name);
-
- 
+    
 
 function renderSelect(name, variants){
     let select = document.createElement('select');
