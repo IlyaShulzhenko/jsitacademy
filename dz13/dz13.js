@@ -57,10 +57,14 @@ function render(parentElment, elementObject) {
             label.appendChild(inputRender);
             parentElment.appendChild(label);
 
+        } else if (element.kind === 'kombo') {
+            let select = renderSelect(element.kind, element.label, element.name, element.variants);
+            parentElment.appendChild(select);
+
         } else if (element.kind === 'radio') {
             let radioButtons = renderRadio(element.kind, element.label, element.name, element.variants);
             parentElment.appendChild(radioButtons);
-
+        
         } else if (element.kind === 'check') {
             let checkbox = renderCheckobox(element.kind, element.label, element.name, element.variants);
             parentElment.appendChild(checkbox);
@@ -68,7 +72,7 @@ function render(parentElment, elementObject) {
         } else if (element.kind === 'memo') {
             let memo =renderTextArea(element);
             parentElment.appendChild(memo);
-            
+
         } else if (element.kind === 'submit') {
             let submit = renderSubmit(element);
             parentElment.appendChild(submit);
@@ -103,18 +107,20 @@ function renderInput1 (type, name) {
 
     
 
-function renderSelect(name, variants){
+function renderSelect(name, label, name, variants){
+    let output = document.createElement('div');
+    output.innerText = label;
     let select = document.createElement('select');
-    select.setAttribute('name', name);
-
+        select.setAttribute('name', name);
     for (let i=0; i<variants.length; i++){
         let option = document.createElement('option');
         option.setAttribute('value', variants[i].value);
         option.innerText = variants[i].text;
         select.appendChild(option);
+        output.appendChild(select)
     }
 
-    return select;
+    return output;
 }
 
 function renderRadio (name, label, name, variantsRadio){

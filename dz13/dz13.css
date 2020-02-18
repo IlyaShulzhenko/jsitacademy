@@ -32,3 +32,9 @@ input[type="text"] {
     float: right;
     width: 160px;
  }
+select{
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;
+    width: 162px;
+}
