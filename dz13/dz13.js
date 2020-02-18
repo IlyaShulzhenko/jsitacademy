@@ -1,4 +1,4 @@
-let formDef1= [
+llet formDef1= [
     {label: 'Название сайта:' ,kind:'longtext', name:'sitename'},
     {label: 'URL сайта:' ,kind:'longtext', name:'siteurl'},
     {label: 'Посетителей в сутки:' ,kind:'number', name:'visitors'},
@@ -94,7 +94,7 @@ function renderInput (type, name) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
 
-    if (name === 'shorttext') {
+    if (name === 'email') {
         input.setAttribute('maxlength', 30);
     }
 
