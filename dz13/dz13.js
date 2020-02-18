@@ -39,7 +39,7 @@ function render(parentElment, elementObject) {
             let inputRender = document.createElement('div');
 
             if (element.kind === 'longtext'){
-                inputRender = renderInput('text', element.name);        убрать true false и проверить в функции, плибо передать третьим параметром объект        
+                inputRender = renderInput('text', element.name);               
             } else {
                 inputRender = renderInput('text', element.name);  
             }
