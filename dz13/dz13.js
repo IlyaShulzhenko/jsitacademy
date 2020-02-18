@@ -40,7 +40,7 @@ function render(parentElment, elementObject) {
 
             if (element.kind === 'longtext'){
                 inputRender = renderInput('text', element.name);               
-            } else {
+            if (element.kind === 'shorttext'){
                 inputRender = renderInput('text', element.name);  
             }
 
@@ -93,15 +93,22 @@ function renderLabel(parentElement, text) {
 function renderInput (type, name) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
+       return input;
+}
+    
+ function renderInput1 (type, name) {
+    input.setAttribute('maxlength', 30);
+     
+       return input1;
+}
 
     if (name === 'email') {
-        input.setAttribute('maxlength', 30);
+        
     }
 
     input.setAttribute('name', name);
 
-    return input;
-}
+ 
 
 function renderSelect(name, variants){
     let select = document.createElement('select');
