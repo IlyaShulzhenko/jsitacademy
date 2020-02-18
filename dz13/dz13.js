@@ -38,8 +38,8 @@ function render(parentElment, elementObject) {
         if (element.kind === 'longtext' || element.kind === 'shorttext'){
             let inputRender = document.createElement('div');
 
-            if (element.kind === 'shorttext'){
-                inputRender = renderInput('text', element.name, true);        убрать true false и проверить в функции, плибо передать третьим параметром объект        
+            if (element.kind === 'longtext'){
+                inputRender = renderInput('text', element.name);        убрать true false и проверить в функции, плибо передать третьим параметром объект        
             } else {
                 inputRender = renderInput('text', element.name);  
             }
@@ -90,7 +90,7 @@ function renderLabel(parentElement, text) {
     return label;
 }
 
-function renderInput (type, name, shorttext = false) {
+function renderInput (type, name) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
 
@@ -146,7 +146,7 @@ function renderCheckobox(name, label, name){
 function renderTextArea(elementObject) {
     let output = document.createElement('div');
     const label = renderLabel(elementObject.name, elementObject.label);
-    const textArea = document.createElement('TEXTAREA');
+    const textArea = document.createElement('textArea');
 
     textArea.setAttribute('name',elementObject.name);
     output.appendChild(label);
