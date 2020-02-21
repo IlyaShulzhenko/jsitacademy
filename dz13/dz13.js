@@ -33,7 +33,7 @@ document.body.appendChild(render(form2, formDef2));
 function render(parentElment, elementObject) {
     let output = document.createElement('div');
 
-    elementObject.forEach((element) => {
+    elementObject.forEach((element, index) => {
         
         if (element.kind === 'longtext' || element.kind === 'shorttext'){
             let inputRender 
@@ -107,7 +107,7 @@ function renderInput1 (type, name) {
 
     
 
-function renderSelect(name, label, name, variants){
+function renderSelect(name, label, index, variants){
     let output = document.createElement('div');
     output.innerText = label;
     let select = document.createElement('select');
