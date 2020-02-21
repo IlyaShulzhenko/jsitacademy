@@ -71,7 +71,6 @@ function render(parentElment, elementObject) {
             let submit = renderSubmit(element);
             parentElment.appendChild(submit);
         }
-        // создать вместо appenChild(submit, memo ... ) одну переменную и вместо всех ее добавить
     });
         return output.appendChild(parentElment);
 }
@@ -96,19 +95,19 @@ function renderInput1 (type) {
     input.setAttribute('maxlength', 30);
     return input;
 }   
-// изменить повторяющиеся имена
+
 function renderSelect(name, label, index, variants){
     let output = document.createElement('div');
     let designation = label
     output.textContent = designation;
     let select = document.createElement('select');
-    select.setAttribute(index, name);
-
+    
     for (let i=0; i<variants.length; i++){
         let option = document.createElement('option');
         option.setAttribute('value', variants[i].value);
         let designation = variants[i].text
         option.textContent = designation;
+        option.setAttribute('name', index);
         select.appendChild(option);
         output.appendChild(select)
     }
@@ -119,16 +118,17 @@ function renderRadio (name, label, index, variantsRadio){
     let output = document.createElement('div');
     let designation = label;
     output.textContent = designation;
-    output.setAttribute(index, name);
-   
+       
     for (let i=0; i<variantsRadio.length; i++){
         let labelElement = renderLabel(variantsRadio[i].value, variantsRadio[i].text);
         let input = renderInput('radio', name);
         input.id = variantsRadio[i].value;
+        input.setAttribute('name', index);
         output.appendChild(input);
         output.appendChild(labelElement);
     }
     return output;
+
 }
 
 function renderCheckobox(name, label, index){
