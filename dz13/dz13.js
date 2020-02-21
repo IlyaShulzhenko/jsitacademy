@@ -1,15 +1,15 @@
 let formDef1= [
-    {label: 'Название сайта:' ,kind:'longtext', name:'sitename'},
-    {label: 'URL сайта:' ,kind:'longtext', name:'siteurl'},
-    {label: 'Посетителей в сутки:' ,kind:'number', name:'visitors'},
-    {label: 'E-mail для связи:' ,kind:'shorttext', name:'email'},
-    {label: 'Рубрика каталога:' ,kind:'kombo', name:'division',
+    {label: 'Название сайта:', kind:'longtext', name:'sitename'},
+    {label: 'URL сайта:', kind:'longtext', name:'siteurl'},
+    {label: 'Посетителей в сутки:', kind:'number', name:'visitors'},
+    {label: 'E-mail для связи:', kind:'shorttext', name:'email'},
+    {label: 'Рубрика каталога:', kind:'kombo', name:'division',
     variants:[{text:'здоровье', value:1}, {text:'домашний уют', value:2}, {text:'бытовая техника', value:3}]},
-    {label: 'Размещение:' ,kind:'radio', name:'payment',
+    {label: 'Размещение:', kind:'radio', name:'payment',
     variants: [{text:'бесплатное', value:1}, {text:'платное', value:2}, {text:'VIP', value:3}]},
     {label: 'Разрешить отзывы:', kind:'check', name:'votes'},
-    {label: 'Описание сайта:' ,kind:'memo', name:'description'},
-    {label: 'Опубликовать:' ,kind:'submit'},
+    {label: 'Описание сайта:', kind:'memo', name:'description'},
+    {label: 'Опубликовать:', kind:'submit'},
 ];
 
 let formDef2=
@@ -32,28 +32,22 @@ document.body.appendChild(render(form2, formDef2));
 
 function render(parentElment, elementObject) {
     let output = document.createElement('div');
-
     elementObject.forEach((element, index) => {
-        
         if (element.kind === 'longtext' || element.kind === 'shorttext'){
             let inputRender 
-            
 
             if (element.kind === 'longtext'){ 
                 inputRender = renderInput('text', element.name);
-                
+
             } else {inputRender = renderInput1('text', element.name);
-            }
-            
-            const label = renderLabel(element.name, element.label);
-        
-            label.appendChild(inputRender);
-            parentElment.appendChild(label);
+        }
+        const label = renderLabel(element.name, element.label);
+        label.appendChild(inputRender);
+        parentElment.appendChild(label);
 
         } else if (element.kind === 'number') {
             const inputRender = renderInput('number', element.name);
             const label = renderLabel(element.name, element.label);
-            
             label.appendChild(inputRender);
             parentElment.appendChild(label);
 
@@ -64,7 +58,7 @@ function render(parentElment, elementObject) {
         } else if (element.kind === 'radio') {
             let radioButtons = renderRadio(element.kind, element.label, element.name, element.variants);
             parentElment.appendChild(radioButtons);
-        
+
         } else if (element.kind === 'check') {
             let checkbox = renderCheckobox(element.kind, element.label, element.name, element.variants);
             parentElment.appendChild(checkbox);
@@ -77,75 +71,71 @@ function render(parentElment, elementObject) {
             let submit = renderSubmit(element);
             parentElment.appendChild(submit);
         }
+        // создать вместо appenChild(submit, memo ... ) одну переменную и вместо всех ее добавить
     });
-
-    return output.appendChild(parentElment);
+        return output.appendChild(parentElment);
 }
-
 
 function renderLabel(parentElement, text) {
     const label = document.createElement('label');
-    
     label.setAttribute('for', parentElement);
-    label.innerText = text;
-    
+    let designation =text
+    label.textContent = designation;
     return label;
 }
 
-function renderInput (type, name) {
+function renderInput (type) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
     return input;
 }
 
-function renderInput1 (type, name) {
+function renderInput1 (type) {
     let input = document.createElement('input');
     input.setAttribute('type', type);
     input.setAttribute('maxlength', 30);
     return input;
-}
-
-    
-
+}   
+// изменить повторяющиеся имена
 function renderSelect(name, label, index, variants){
     let output = document.createElement('div');
-    output.innerText = label;
+    let designation = label
+    output.textContent = designation;
     let select = document.createElement('select');
-        select.setAttribute('name', name);
+    select.setAttribute(index, name);
+
     for (let i=0; i<variants.length; i++){
         let option = document.createElement('option');
         option.setAttribute('value', variants[i].value);
-        option.innerText = variants[i].text;
+        let designation = variants[i].text
+        option.textContent = designation;
         select.appendChild(option);
         output.appendChild(select)
     }
-
     return output;
 }
 
-function renderRadio (name, label, name, variantsRadio){
+function renderRadio (name, label, index, variantsRadio){
     let output = document.createElement('div');
-    output.innerText = label;
+    let designation = label;
+    output.textContent = designation;
+    output.setAttribute(index, name);
+   
     for (let i=0; i<variantsRadio.length; i++){
-    
         let labelElement = renderLabel(variantsRadio[i].value, variantsRadio[i].text);
         let input = renderInput('radio', name);
-
         input.id = variantsRadio[i].value;
         output.appendChild(input);
         output.appendChild(labelElement);
-    };
-
+    }
     return output;
 }
 
-function renderCheckobox(name, label, name){
+function renderCheckobox(name, label, index){
     let labelElement = renderLabel(name, label);
-    let input = renderInput('checkbox', name);
-    
-    input.id = name;
+    let input = renderInput('checkbox', name);    
+    input.id = index;
     labelElement.appendChild(input);
-    
     return labelElement;
 }
 
@@ -153,19 +143,18 @@ function renderTextArea(elementObject) {
     let output = document.createElement('div');
     const label = renderLabel(elementObject.name, elementObject.label);
     const textArea = document.createElement('textArea');
-
     textArea.setAttribute('name',elementObject.name);
     output.appendChild(label);
     output.appendChild(textArea);
-
     return output;
 }
 
 function renderSubmit(elementObject) {
-    const submit = document.createElement('input');
+    let submit = document.createElement('button');
     submit.setAttribute('type','submit');
-    submit.innerText = elementObject.label;
-
+    let designation = elementObject.label;
+    submit.textContent = designation;
     return submit;
-    
 }
+
+
