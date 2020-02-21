@@ -32,7 +32,7 @@ document.body.appendChild(render(form2, formDef2));
 
 function render(parentElment, elementObject) {
     let output = document.createElement('div');
-    elementObject.forEach((element, index) => {
+    elementObject.forEach((element) => {
         if (element.kind === 'longtext' || element.kind === 'shorttext'){
             let inputRender 
 
