@@ -1,49 +1,48 @@
 function HashStorageFuncs(){
-    let hash = {};
-    HashStorageFuncs.prototype.addValue = function(key, value){
-    return hash[key] = value;
-    };
-
-    HashStorageFuncs.prototype.getValue = function(key){
-    return hash[key];
-    };
-
-    HashStorageFuncs.prototype.deleteValue = function(key){
-    if(!(key in hash[key])){
-        return false
-    };
-    return delete hash[key];
-    };
-
-    HashStorageFuncs.prototype.getKeys = function(){
-    return hash[key];
-    };
+    this.hash = {};
 }
+HashStorageFuncs.prototype.addValue = function(key, value){
+    return this.hash[key] = value;
+    }
+
+HashStorageFuncs.prototype.getValue = function(key){
+    return this.hash[key];
+    }
+
+HashStorageFuncs.prototype.deleteValue = function(key){
+    if(!(key in this.hash[key])){
+        return false;
+    }
+    return delete this.hash[key];
+    }
+
+HashStorageFuncs.prototype.getKeys = function(){
+    return this.hash[key];
+    }
+
 let HashStorageFunc = new HashStorageFuncs();
 
 
 HeirOne.prototype = Object.create(HashStorageFuncs.prototype);
 HeirOne.prototype.constructor = HeirOne;
-function HeirOne(){
-        alert('good');
-        return HeirOne();
-};
+HeirOne.prototype.addValue = function(){
+    HashStorageFunc.prototype.addValue.apply(this, arguments);
+        return alert('good');
+}
 
-let one = new HeirOne();
+let heirone = new HeirOne(); 
 
 
 HeirTwo.prototype = Object.create(HashStorageFuncs.prototype);
 HeirTwo.prototype.constructor = HeirTwo;
-function HeirTwo(){
-    this.getValue = function(key){
-            if(key<10){ 
-            return alert('good');
-            } else {
-            return alert('bad');
-            };
-    };
+HeirTwo.prototype.conclusion = function(){
+    if(key<10){ 
+        return alert('good');
+    } else {
+        return alert('bad');
+    }
 }
-let two = new HeirTwo()
+let two = new HeirTwo();
 
 
 
