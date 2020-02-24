@@ -1,24 +1,39 @@
-let formDef1= [
-    {label: 'Название сайта:', kind:'longtext', name:'sitename'},
-    {label: 'URL сайта:', kind:'longtext', name:'siteurl'},
-    {label: 'Посетителей в сутки:', kind:'number', name:'visitors'},
-    {label: 'E-mail для связи:', kind:'shorttext', name:'email'},
-    {label: 'Рубрика каталога:', kind:'kombo', name:'division',
-    variants:[{text:'здоровье', value:1}, {text:'домашний уют', value:2}, {text:'бытовая техника', value:3}]},
-    {label: 'Размещение:', kind:'radio', name:'payment',
-    variants: [{text:'бесплатное', value:1}, {text:'платное', value:2}, {text:'VIP', value:3}]},
-    {label: 'Разрешить отзывы:', kind:'check', name:'votes'},
-    {label: 'Описание сайта:', kind:'memo', name:'description'},
-    {label: 'Опубликовать:', kind:'submit'},
+let formDef1 = [
+  { label: 'Название сайта:', kind: 'longtext', name: 'sitename' },
+  { label: 'URL сайта:', kind: 'longtext', name: 'siteurl' },
+  { label: 'Посетителей в сутки:', kind: 'number', name: 'visitors' },
+  { label: 'E-mail для связи:', kind: 'shorttext', name: 'email' },
+  {
+    label: 'Рубрика каталога:',
+    kind: 'kombo',
+    name: 'division',
+    variants: [
+      { text: 'здоровье', value: 1 },
+      { text: 'домашний уют', value: 2 },
+      { text: 'бытовая техника', value: 3 }
+    ]
+  },
+  {
+    label: 'Размещение:',
+    kind: 'radio',
+    name: 'payment',
+    variants: [
+      { text: 'бесплатное', value: 1 },
+      { text: 'платное', value: 2 },
+      { text: 'VIP', value: 3 }
+    ]
+  },
+  { label: 'Разрешить отзывы:', kind: 'check', name: 'votes' },
+  { label: 'Описание сайта:', kind: 'memo', name: 'description' },
+  { label: 'Опубликовать:', kind: 'submit' }
 ];
 
-let formDef2=
-[
-    {label: 'Фамилия:', kind:'longtext', name:'lastname'},
-    {label: 'Имя:', kind:'longtext', name:'firstname'},
-    {label: 'Отчество:', kind:'longtext', name:'secondname'},
-    {label: 'Возраст:', kind:'number', name:'age'},
-    {label: 'Зарегистрироваться:', kind:'submit'},
+let formDef2 = [
+  { label: 'Фамилия:', kind: 'longtext', name: 'lastname' },
+  { label: 'Имя:', kind: 'longtext', name: 'firstname' },
+  { label: 'Отчество:', kind: 'longtext', name: 'secondname' },
+  { label: 'Возраст:', kind: 'number', name: 'age' },
+  { label: 'Зарегистрироваться:', kind: 'submit' }
 ];
 
 let form1 = document.createElement('form');
@@ -31,130 +46,129 @@ document.body.appendChild(render(form1, formDef1));
 document.body.appendChild(render(form2, formDef2));
 
 function render(parentElment, elementObject) {
-    let output = document.createElement('div');
-    elementObject.forEach((element) => {
-        if (element.kind === 'longtext' || element.kind === 'shorttext'){
-            let inputRender 
+  	let output = document.createElement('div');
+	
+  	elementObject.forEach(element => {
+		let newElement;
+		  
+    	if (element.kind === 'longtext' || element.kind === 'shorttext') {
+			const input = renderInput('text', element);
+			  
+      		newElement = renderLabel(element.name, element.label);
+      		newElement.appendChild(input);
+    	} else if (element.kind === 'number') {
+      		const input = renderInput('number', element);
+			  
+			newElement = renderLabel(element.name, element.label);
+      		newElement.appendChild(input);
+    	} else if (element.kind === 'kombo') {
+      		newElement = renderSelect(element);      	
+    	} else if (element.kind === 'radio') {
+      		newElement = renderRadio(element);
+    	} else if (element.kind === 'check') {
+			newElement = renderCheckobox(element);
+    	} else if (element.kind === 'memo') {
+			newElement = renderTextArea(element);
+    	} else if (element.kind === 'submit') {
+			newElement = renderSubmit(element);
+    	}
 
-            if (element.kind === 'longtext'){ 
-                inputRender = renderInput('text', element.name);
+    	parentElment.appendChild(newElement);
+  	});
 
-            } else {inputRender = renderInput1('text', element.name);
-        }
-        const label = renderLabel(element.name, element.label);
-        label.appendChild(inputRender);
-        parentElment.appendChild(label);
-
-        } else if (element.kind === 'number') {
-            const inputRender = renderInput('number', element.name);
-            const label = renderLabel(element.name, element.label);
-            label.appendChild(inputRender);
-            parentElment.appendChild(label);
-
-        } else if (element.kind === 'kombo') {
-            let select = renderSelect(element.kind, element.label, element.name, element.variants);
-            parentElment.appendChild(select);
-
-        } else if (element.kind === 'radio') {
-            let radioButtons = renderRadio(element.kind, element.label, element.name, element.variants);
-            parentElment.appendChild(radioButtons);
-
-        } else if (element.kind === 'check') {
-            let checkbox = renderCheckobox(element.kind, element.label, element.name, element.variants);
-            parentElment.appendChild(checkbox);
-
-        } else if (element.kind === 'memo') {
-            let memo =renderTextArea(element);
-            parentElment.appendChild(memo);
-
-        } else if (element.kind === 'submit') {
-            let submit = renderSubmit(element);
-            parentElment.appendChild(submit);
-        }
-    });
-        return output.appendChild(parentElment);
+  	return output.appendChild(parentElment);
 }
 
 function renderLabel(parentElement, text) {
-    const label = document.createElement('label');
-    label.setAttribute('for', parentElement);
-    let designation =text
-    label.textContent = designation;
-    return label;
+  	const label = document.createElement('label');
+  
+  	label.textContent = text;
+
+  	if (parentElement) {
+		label.setAttribute('for', parentElement);	  
+  	}
+  
+  	return label;
 }
 
-function renderInput (type) {
-    let input = document.createElement('input');
-    input.setAttribute('type', type);
-    return input;
+function renderInput(type, element) {
+  	let input = document.createElement('input');
+
+  	input.setAttribute('type', type);
+	input.setAttribute('name', element.name);
+
+  	if (element.kind === 'shorttext') {
+    	input.setAttribute('maxlength', 30);
+  	}
+
+  	return input;
 }
 
-function renderInput1 (type) {
-    let input = document.createElement('input');
-    input.setAttribute('type', type);
-    input.setAttribute('maxlength', 30);
-    return input;
-}   
+function renderSelect(element) {
+	const output = document.createElement('div');  
+	const select = document.createElement('select');
+	const variants = element.variants;  
+	const label = document.createElement('label');
 
-function renderSelect(name, label, index, variants){
-    let output = document.createElement('div');
-    let designation = label
-    output.textContent = designation;
-    let select = document.createElement('select');
-    
-    for (let i=0; i<variants.length; i++){
-        let option = document.createElement('option');
-        option.setAttribute('value', variants[i].value);
-        let designation = variants[i].text
-        option.textContent = designation;
-        option.setAttribute('name', index);
-        select.appendChild(option);
-        output.appendChild(select)
-    }
-    return output;
+	label.textContent = element.label;
+	label.appendChild(select);
+	select.setAttribute('name', element.name)
+	output.textContent = element.designation;
+	  
+  	for (let i = 0; i < variants.length; i++) {
+    	const option = document.createElement('option');
+
+		option.setAttribute('value', variants[i].value);
+		option.textContent = variants[i].text;
+		
+    	select.appendChild(option);
+  	}
+
+  	return output.appendChild(label);
 }
 
-function renderRadio (name, label, index, variantsRadio){
-    let output = document.createElement('div');
-    let designation = label;
-    output.textContent = designation;
-       
-    for (let i=0; i<variantsRadio.length; i++){
-        let labelElement = renderLabel(variantsRadio[i].value, variantsRadio[i].text);
-        let input = renderInput('radio', name);
-        input.id = variantsRadio[i].value;
-        input.setAttribute('name', index);
-        output.appendChild(input);
-        output.appendChild(labelElement);
-    }
-    return output;
-
+function renderRadio(element) {
+  	const output = document.createElement('div');
+	output.textContent = element.label;
+	  
+	for (let i = 0; i < element.variants.length; i++) {
+    	const labelElement = renderLabel(element.variants[i].value,	element.variants[i].text);
+		const input = renderInput('radio', element.name);
+		
+    	input.id = element.variants[i].value;
+    	input.setAttribute('name', element.index);
+    	output.appendChild(input);
+    	output.appendChild(labelElement);
+  	}
+  	return output;
 }
 
-function renderCheckobox(name, label, index){
-    let labelElement = renderLabel(name, label);
-    let input = renderInput('checkbox', name);    
-    input.id = index;
-    labelElement.appendChild(input);
-    return labelElement;
+function renderCheckobox(element) {
+	const labelElement = renderLabel(null, element.label);
+  	const input = renderInput('checkbox', element.name);
+
+	labelElement.appendChild(input);
+	
+	return labelElement;
 }
 
 function renderTextArea(elementObject) {
-    let output = document.createElement('div');
-    const label = renderLabel(elementObject.name, elementObject.label);
-    const textArea = document.createElement('textArea');
-    textArea.setAttribute('name',elementObject.name);
-    output.appendChild(label);
-    output.appendChild(textArea);
-    return output;
+  	let output = document.createElement('div');
+  	const label = renderLabel(elementObject.name, elementObject.label);
+	const textArea = document.createElement('textArea');
+	  
+  	textArea.setAttribute('name', elementObject.name);
+  	output.appendChild(label);
+	output.appendChild(textArea);
+	  
+  	return output;
 }
 
 function renderSubmit(elementObject) {
-    let submit = document.createElement('button');
-    submit.setAttribute('type','submit');
-    let designation = elementObject.label;
-    submit.textContent = designation;
-    return submit;
+	let submit = document.createElement('button');
+	  
+  	submit.setAttribute('type', 'submit');
+	submit.textContent = elementObject.label;
+	  
+	return submit;
 }
-
-
