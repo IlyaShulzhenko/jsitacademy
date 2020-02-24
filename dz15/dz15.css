@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(43, 12, 12);
+}
+
+.position {
+    position: absolute;
+    z-index: 5;
+}
