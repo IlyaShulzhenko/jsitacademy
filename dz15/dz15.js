@@ -43,5 +43,5 @@ function up() {
 
 ball.ondragstart = function () {
   return false;
-};
+}
 }
