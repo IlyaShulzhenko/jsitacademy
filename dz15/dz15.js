@@ -41,7 +41,7 @@ function up() {
   ball.classList.remove('scaleble');
 }
 
-elem.ondragstart = function () {
+ball.ondragstart = function () {
   return false;
 };
 }
