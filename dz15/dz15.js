@@ -1,39 +1,47 @@
-let figures = document.querySelectorAll('.figure');
-figures.forEach(element => {
-  element.addEventListener('mousedown', function() {
-    let sizeX = event.pageX - getElementPos(element).left;
-    let sizeY = event.pageY - getElementPos(element).top;
-    element.classList.add('position');
-    document.body.append(element);
+const screen = document.querySelector('.screen');
 
-    moveElement(event.pageX, event.pageY);
+const balls = Array.from(screen.children);
 
-    function moveElement(pageX, pageY) {
-      element.style.left = pageX - sizeX + 'px';
-      element.style.top = pageY - sizeY + 'px';
-    }
-    
-    function onMouseMove(event) {
-      moveElement(event.pageX, event.pageY);
-      element.style.cursor = 'pointer';
-    }
+balls.reverse().forEach(ball => {
+const coords = ball.getBoundingClientRect();
+ball.style.left = coords.left + 'px';
+ball.style.top = coords.top + 'px';
+ball.classList.add('positioned');
 
-    document.addEventListener('mousemove', onMouseMove);
+ball.addEventListener('mouseover', event => event.target.classList.add('grab'));
+ball.addEventListener('mouseout', removeGrabbing);
+ball.addEventListener('mousedown', down);
 
-    element.onmouseup = function() {
-      document.removeEventListener('mousemove', onMouseMove);
-      element.onmouseup = null;
-    };
-  });
-  element.ondragstart = function() {
-    return false;
-  };
 });
 
-function getElementPos(elem) {
-  let position = elem.getBoundingClientRect();
-  return {
-    left: position.left,
-    top: position.top
-  };
+function removeGrabbing (event) {
+event.target.classList.remove('grab');
+event.target.removeEventListener('mouseout', removeGrabbing);
+}
+
+function down(event) {
+const ball = event.target;
+screen.append(ball);
+
+const shiftX = event.clientX - parseInt(ball.style.left);
+const shiftY = event.clientY - parseInt(ball.style.top);
+
+ball.classList.add('scaleble');
+screen.addEventListener('mousemove', move);
+screen.addEventListener('mouseup', up);
+
+function move(event) {
+ball.style.left = event.clientX - shiftX + 'px';
+ball.style.top = event.clientY - shiftY + 'px';
+}
+
+function up() {
+screen.removeEventListener('mousemove', move);
+screen.removeEventListener('mouseup', up);
+ball.classList.remove('scaleble');
+}
+
+elem.ondragstart = function () {
+return false;
+};
 }

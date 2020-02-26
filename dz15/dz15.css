@@ -1,8 +1,46 @@
-body {
-    background-color: rgb(43, 12, 12);
-}
-
-.position {
+.screen {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+    }
+    
+    .ball1 {
+    width: 150px;
+    height: 150px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Soccerball.png/150px-Soccerball.png);
+    border-radius:50%;
+    background-position:center;
+    }
+    
+    .ball2 {
+    width: 150px;
+    height: 150px;
+    background-image: url(https://cdn.c4.r-99.com/sites/default/files/imagecache/150o/product-images/235864/2XCqfBIwL6Sqme6Q89WluA.png);
+    border-radius:50%;
+    background-position:center;
+    }
+    
+    .ball3 {
+    width: 125px;
+    height: 125px;
+    background-image: url(https://wiki.cuspu.edu.ua/images/thumb/9/9f/%D0%9C%D1%8F%D1%87.jpg/150px-%D0%9C%D1%8F%D1%87.jpg);
+    border-radius:50%;
+    background-position:center;
+    }
+    
+    .positioned {
     position: absolute;
-    z-index: 5;
-}
+    }
+    
+    .grab {
+    cursor: grab;
+    }
+    
+    .scaleble {
+    transform: scale(1.2);
+    cursor: grabbing;
+    z-index: 10;
+    }
