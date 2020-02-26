@@ -11,7 +11,7 @@ balls.reverse().forEach(ball => {
   ball.addEventListener('mouseover', event => event.target.classList.add('grab'));
   ball.addEventListener('mouseout', removeGrabbing);
   ball.addEventListener('mousedown', down);
-};
+});
 
 function removeGrabbing (event) {
   event.target.classList.remove('grab');
