@@ -184,8 +184,8 @@ let formDef1 = [
   let array = [...inputTexts, ...inputNumbers, inputRadios, ...checkboxs, selects,textareas];
 
   array.forEach(item => {
-    item.addEventListener('input', validate);
-    item.addEventListener('blur', validatie);
+    
+    item.addEventListener('blur', validate);
  });
 
 document.addEventListener('submit', function (event){
@@ -207,10 +207,10 @@ function validate(){
 	array.forEach (item =>{
 		
 		if(item.value ===''){
-			addCaption(item);
+			err(item);
 
 			const errorText = document.createElement('div');
-			errorText.innerHTML = "please check";
+			errorText.textContent = 'Введите верное значение'
 			errorText.className = 'error-text';
 			item.parentElement.appendChild(errorText);
 
@@ -218,16 +218,13 @@ function validate(){
 			addCaption(item);
 		}
 	})
-	if (!isEmail(email.value)) {
-		addCaption(email);
-	}
-	
+
 }
-function addCaption(input) {
+function err(input) {
 	input.style.borderColor = '#FF5964';
 }
 
-function setSuccessFor(input) {
+function addCaption(input) {
 	input.style.borderColor = '#9EE279';
 }
 
