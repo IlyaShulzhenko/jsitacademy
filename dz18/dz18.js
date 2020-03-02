@@ -52,7 +52,7 @@ function drawClock(drawing) {
 			hourLength = 170;
 
 		let secondX = radiusClock + secondLength * Math.cos(secondsRadian),
-		secondY = radiusClock + secondLength * Math.sin(secondsRadian);
+		    secondY = radiusClock + secondLength * Math.sin(secondsRadian);
 
 		context.beginPath();
 		context.strokeStyle = 'white';
@@ -63,7 +63,7 @@ function drawClock(drawing) {
 		context.stroke();
 
 		let minuteX = radiusClock + minuteLength * Math.cos(minutesRadian),
-			minuteY = radiusClock + minuteLength * Math.sin(minutesRadian);
+		    minuteY = radiusClock + minuteLength * Math.sin(minutesRadian);
 
 		context.beginPath();
 		context.strokeStyle = 'red';
@@ -74,7 +74,7 @@ function drawClock(drawing) {
 		context.stroke();
 
 		let hourX = radiusClock + hourLength * Math.cos(hoursRadian),
-			hourY = radiusClock + hourLength * Math.sin(hoursRadian);
+		    hourY = radiusClock + hourLength * Math.sin(hoursRadian);
 
 		context.beginPath();
 		context.strokeStyle = 'black';
