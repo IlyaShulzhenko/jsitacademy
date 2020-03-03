@@ -185,47 +185,57 @@ let formDef1 = [
 
   array.forEach(item => {
     
+    
     item.addEventListener('blur', validate);
  });
 
 document.addEventListener('submit', function (event){
 	event.preventDefault();
 
-	removeErrors();
-	validate();
+    validate();
+    
+    
 })
 
-function removeErrors(){
-	let errors = document.getElementsByClassName('error-text');
-	for(let i=0; i<errors.length;i++){
-		errors[i].remove();
-	}
-}
 
 function validate(){
 
 	array.forEach (item =>{
 		
 		if(item.value ===''){
-			err(item);
+			setAside(item);
 
 			const errorText = document.createElement('div');
 			errorText.textContent = 'Введите верное значение'
-			errorText.className = 'error-text';
-			item.parentElement.appendChild(errorText);
+			errorText.className = 'error';
+      item.parentElement.appendChild(errorText);
+            
 
 		}else{
-			addCaption(item);
+            addCaption(item);
+           removeErrors()
+            
 		}
 	})
 
 }
-function err(input) {
-	input.style.borderColor = '#FF5964';
+
+function removeErrors(){
+	let errors = document.getElementsByClassName('error');
+	for(let i=0; i<errors.length; i++){
+    errors[i].remove();
+	}
+}
+
+
+function setAside(input) {
+    input.style.borderColor = 'red';
+    
 }
 
 function addCaption(input) {
-	input.style.borderColor = '#9EE279';
+    input.style.borderColor = 'green';
+    
 }
 
 
