@@ -168,7 +168,7 @@ let formDef1 = [
   function renderSubmit(elementObject) {
       let submit = document.createElement('button');
 
-        submit.setAttribute('type', 'submit');
+      submit.setAttribute('type', 'submit');
       submit.textContent = elementObject.label;
 
       return submit;
@@ -231,4 +231,5 @@ function setAside(input) {
 
 function addCaption(input) {
     input.style.borderColor = 'green';
+}
 }
