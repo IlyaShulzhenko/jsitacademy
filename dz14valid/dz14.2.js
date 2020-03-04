@@ -174,7 +174,7 @@ let formDef1 = [
       return submit;
   }
 
-  const inputTexts = document.querySelectorAll('input[type = "text"]');
+    const inputTexts = document.querySelectorAll('input[type = "text"]');
   const inputNumbers = document.querySelectorAll('input[type = "number"]');
   const inputRadios = document.querySelector('input[type = "radio"]');
   const checkboxs = document.querySelectorAll('input[type = "checkbox"]');
@@ -231,5 +231,4 @@ function setAside(input) {
 
 function addCaption(input) {
     input.style.borderColor = 'green';
-}
 }
