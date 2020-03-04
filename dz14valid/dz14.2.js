@@ -190,13 +190,6 @@ let formDef1 = [
     });
  });
 
-// document.addEventListener('submit', function (event){
-// 	event.preventDefault();
-//
-// 	removeErrors();
-//    	validate();
-// });
-
 
 function validate(item){
     if(item.value ===''){
@@ -228,8 +221,3 @@ function setAside(input) {
 function addCaption(input) {
     input.style.borderColor = 'green';
 }
-
-// function isEmail(e) {
-//     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(String(e).toLowerCase());
-// }
