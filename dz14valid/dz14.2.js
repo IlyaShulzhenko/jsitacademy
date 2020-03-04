@@ -194,37 +194,24 @@ document.addEventListener('submit', function (event){
 	event.preventDefault();
 
 	removeErrors();
-   	validates();
+   	validate();
 });
+
 
 function validate(item){
     if(item.value ===''){
-        set(item);
+        setAside(item);
         const errorText = document.createElement('div');
         errorText.textContent = 'Введите верное значение';
-        errorText.className = 'invalides';
+        errorText.className = 'error';
         item.parentElement.appendChild(errorText);
     }else{
         if (item.nextElementSibling) {
             removeErrors();
         }
-        add(item);
+        addCaption(item);
     }
 }
-function validates(){
-
-	array.forEach (item =>{
-		
-		if(item.value ===''){
-			set(item);
-
-			const errorText = document.createElement('div');
-			errorText.textContent = 'Ошибка ввода'
-			errorText.className = 'invalides';
-      			item.parentElement.appendChild(errorText);
-            
-		}else{
-            add(item);
 
 function removeErrors(){
 	let errors = document.getElementsByClassName('error');
@@ -233,11 +220,11 @@ function removeErrors(){
 	}
 }
 
-function set(input) {
+function setAside(input) {
     input.style.borderColor = 'red';
 
 }
 
-function add(input) {
+function addCaption(input) {
     input.style.borderColor = 'green';
 }
