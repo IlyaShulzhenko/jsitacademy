@@ -190,6 +190,12 @@ let formDef1 = [
     });
  });
 
+document.addEventListener('submit', function (event){
+	event.preventDefault();
+
+	removeErrors();
+   	validate();
+});
 
 function validate(item){
     if(item.value ===''){
