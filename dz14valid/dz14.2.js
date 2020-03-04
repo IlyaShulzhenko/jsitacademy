@@ -184,7 +184,8 @@ let formDef1 = [
   let array = [...inputTexts, ...inputNumbers, inputRadios, ...checkboxs, selects,textareas];
 
   array.forEach(item => {
-	item.addEventListener('blur', removeErrors, validate);
+	item.addEventListener('blur', removeErrors);  
+	item.addEventListener('blur', validate);
   });
 
   document.addEventListener('submit', function (event){
