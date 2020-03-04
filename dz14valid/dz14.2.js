@@ -194,7 +194,7 @@ document.addEventListener('submit', function (event){
 	event.preventDefault();
 
 	removeErrors();
-   	validate();
+   	validate(item);
 });
 
 function validate(item){
