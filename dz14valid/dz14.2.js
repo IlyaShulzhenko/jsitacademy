@@ -194,7 +194,10 @@ document.addEventListener('submit', function (event){
 	event.preventDefault();
 
 	removeErrors();
-   	validate();
+	array.forEach(item => {
+        validate(item);
+
+    });
 });
 
 
@@ -215,6 +218,7 @@ function validate(item){
 
 function removeErrors(){
 	let errors = document.getElementsByClassName('error');
+
 	for(let i=0; i<errors.length; i++){
     	errors[i].remove();
 	}
