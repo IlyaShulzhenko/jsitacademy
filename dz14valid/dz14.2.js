@@ -191,9 +191,9 @@ let formDef1 = [
 
 document.addEventListener('submit', function (event){
 	event.preventDefault();
-
-    validate();
-    
+	
+	removeErrors()
+   	validate();    
     
 })
 
@@ -208,12 +208,12 @@ function validate(){
 			const errorText = document.createElement('div');
 			errorText.textContent = 'Введите верное значение'
 			errorText.className = 'error';
-      item.parentElement.appendChild(errorText);
+      			item.parentElement.appendChild(errorText);
             
 
 		}else{
-            addCaption(item);
-           removeErrors()
+            		addCaption(item);
+          
             
 		}
 	})
@@ -223,7 +223,7 @@ function validate(){
 function removeErrors(){
 	let errors = document.getElementsByClassName('error');
 	for(let i=0; i<errors.length; i++){
-    errors[i].remove();
+    	errors[i].remove();
 	}
 }
 
@@ -239,7 +239,7 @@ function addCaption(input) {
 }
 
 
-// let e = email.value;
+
 // function isEmail(e) {
 //     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 //     return re.test(String(e).toLowerCase());
