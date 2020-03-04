@@ -54,17 +54,17 @@ let formDef1 = [
           if (element.kind === 'longtext' || element.kind === 'shorttext') {
               const input = renderInput('text', element);
                 
-                newElement = renderLabel(element.name, element.label);
-                newElement.appendChild(input);
+              newElement = renderLabel(element.name, element.label);
+              newElement.appendChild(input);
           } else if (element.kind === 'number') {
                 const input = renderInput('number', element);
                 
               newElement = renderLabel(element.name, element.label);
-                newElement.appendChild(input);
+              newElement.appendChild(input);
           } else if (element.kind === 'kombo') {
-                newElement = renderSelect(element);      	
+              newElement = renderSelect(element);      	
           } else if (element.kind === 'radio') {
-                newElement = renderRadio(element);
+              newElement = renderRadio(element);
           } else if (element.kind === 'check') {
               newElement = renderCheckobox(element);
           } else if (element.kind === 'memo') {
@@ -94,7 +94,7 @@ let formDef1 = [
   function renderInput(type, element) {
       let input = document.createElement('input');
   
-        input.setAttribute('type', type);
+      input.setAttribute('type', type);
       input.setAttribute('name', element.name);
   
       if (element.kind === 'shorttext') {
@@ -145,7 +145,7 @@ let formDef1 = [
   
   function renderCheckobox(element) {
       const labelElement = renderLabel(null, element.label);
-        const input = renderInput('checkbox', element.name);
+      const input = renderInput('checkbox', element.name);
   
       labelElement.appendChild(input);
       
@@ -156,11 +156,11 @@ let formDef1 = [
   function renderTextArea(elementObject) {
         let output = document.createElement('div');
         const label = renderLabel(elementObject.name, elementObject.label);
-      const textArea = document.createElement('textArea');
+      	const textArea = document.createElement('textArea');
         
         textArea.setAttribute('name', elementObject.name);
         output.appendChild(label);
-      output.appendChild(textArea);
+      	output.appendChild(textArea);
         
         return output;
   }
@@ -168,7 +168,7 @@ let formDef1 = [
   function renderSubmit(elementObject) {
       let submit = document.createElement('button');
         
-        submit.setAttribute('type', 'submit');
+      submit.setAttribute('type', 'submit');
       submit.textContent = elementObject.label;
         
       return submit;
@@ -184,12 +184,10 @@ let formDef1 = [
   let array = [...inputTexts, ...inputNumbers, inputRadios, ...checkboxs, selects,textareas];
 
   array.forEach(item => {
-    
-    
-    item.addEventListener('blur', validate);
- });
+	item.addEventListener('blur', validate);
+  });
 
-document.addEventListener('submit', function (event){
+  document.addEventListener('submit', function (event){
 	event.preventDefault();
 	
 	removeErrors()
@@ -202,22 +200,19 @@ function validate(){
 
 	array.forEach (item =>{
 		
-		if(item.value ===''){
+		if(item.value === ''){
 			setAside(item);
 
 			const errorText = document.createElement('div');
 			errorText.textContent = 'Введите верное значение'
 			errorText.className = 'error';
-      			item.parentElement.appendChild(errorText);
-            
+      			item.parentElement.appendChild(errorText);         
 
 		}else{
-            		addCaption(item);
-          
+            		addCaption(item);      
             
 		}
-	})
-
+	});
 }
 
 function removeErrors(){
