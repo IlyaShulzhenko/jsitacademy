@@ -57,7 +57,7 @@ let formDef1 = [
               newElement = renderLabel(element.name, element.label);
               newElement.appendChild(input);
           } else if (element.kind === 'number') {
-                const input = renderInput('number', element);
+              const input = renderInput('number', element);
                 
               newElement = renderLabel(element.name, element.label);
               newElement.appendChild(input);
@@ -85,7 +85,7 @@ let formDef1 = [
         label.textContent = text;
   
         if (parentElement) {
-          label.setAttribute('for', parentElement);	  
+        	label.setAttribute('for', parentElement);	  
         }
     
         return label;
@@ -128,7 +128,7 @@ let formDef1 = [
   }
   
   function renderRadio(element) {
-        const output = document.createElement('div');
+      const output = document.createElement('div');
       output.textContent = element.label;
         
       for (let i = 0; i < element.variants.length; i++) {
