@@ -168,13 +168,13 @@ let formDef1 = [
   function renderSubmit(elementObject) {
       let submit = document.createElement('button');
 
-      submit.setAttribute('type', 'submit');
+        submit.setAttribute('type', 'submit');
       submit.textContent = elementObject.label;
 
       return submit;
   }
 
-    const inputTexts = document.querySelectorAll('input[type = "text"]');
+  const inputTexts = document.querySelectorAll('input[type = "text"]');
   const inputNumbers = document.querySelectorAll('input[type = "number"]');
   const inputRadios = document.querySelector('input[type = "radio"]');
   const checkboxs = document.querySelectorAll('input[type = "checkbox"]');
