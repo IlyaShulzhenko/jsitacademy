@@ -184,6 +184,7 @@ let formDef1 = [
   let array = [...inputTexts, ...inputNumbers, inputRadios, ...checkboxs, selects,textareas];
 
   array.forEach(item => {
+	  //
 	input.onblur = function() {
   		if (!input.value.includes('@')) { // не email
     		input.classList.add('invalid');
@@ -198,6 +199,7 @@ input.onfocus = function() {
     	error.innerHTML = "";
 	item.addEventListener('blur', validate);
   });
+	//
 
   document.addEventListener('submit', function (event){
 	event.preventDefault();
@@ -217,7 +219,7 @@ function validate(){
 
 			const errorText = document.createElement('div');
 			errorText.textContent = 'Введите верное значение'
-			errorText.className = 'error';
+			errorText.className = 'invalid';
       			item.parentElement.appendChild(errorText);         
 
 		}else{
@@ -228,7 +230,7 @@ function validate(){
 }
 
 function removeErrors(){
-	let errors = document.getElementsByClassName('error');
+	let errors = document.getElementsByClassName('invalid');
 	for(let i=0; i<errors.length; i++){
     	errors[i].remove();
 	}
