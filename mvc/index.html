@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="clock">
+    Local
+    <span class="hour"></span>:<span class="min"></span>:<span class="sec"></span>
+
+    <button class="start">Start</button>
+    <button class="stop">Pause</button>
+</div>
+
+<div id="clockUTC">
+    UTC
+    <span class="hour"></span>:<span class="min"></span>:<span class="sec"></span>
+
+    <button class="start">Start</button>
+    <button class="stop">Pause</button>
+</div>
+
+
+<script src="model.js"></script>
+<script src="view.js"></script>
+<script src="controller.js"></script>
+<script src="index.js"></script>
+<canvas id="canvas" width="600" height="600"></canvas>
+</body>
+</html>
