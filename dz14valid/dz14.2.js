@@ -197,7 +197,7 @@ document.addEventListener('submit', function (event){
 
 	for (let i = 0; i < array.length; i++) {
 
-        validate(array[i]);
+        	validate(array[i]);
     }
 });
 
@@ -237,7 +237,3 @@ function addCaption(input) {
     input.style.borderColor = 'green';
 }
 
-// function isEmail(e) {
-//     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(String(e).toLowerCase());
-// }
