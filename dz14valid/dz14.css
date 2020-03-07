@@ -1,12 +1,20 @@
 form{
     display: flex;
-    flex-direction: column; 
-    width: 310px; 
+    flex-direction: column;
+    width: 310px;
     height: auto;
 
 }
 form>*{
     width: 100%;
+    position: relative;
+}
+
+form>* .error {
+    position: absolute;
+    left: auto;
+    top: 0;
+    right: -200px;
 }
 input[type="text"] {
     border: 1px solid black;

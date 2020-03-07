@@ -128,19 +128,21 @@ let formDef1 = [
   }
 
   function renderRadio(element) {
-        const output = document.createElement('div');
+      const output = document.createElement('div');
       output.textContent = element.label;
 
       for (let i = 0; i < element.variants.length; i++) {
           const labelElement = renderLabel(element.variants[i].value,	element.variants[i].text);
           const input = renderInput('radio', element.name);
 
+          input.checked = true;
           input.id = element.variants[i].value;
-          input.setAttribute('name', element.index);
+          input.setAttribute('name', 'placement');
           output.appendChild(input);
           output.appendChild(labelElement);
-        }
-        return output;
+      }
+
+      return output;
   }
 
   function renderCheckobox(element) {
@@ -193,11 +195,10 @@ let formDef1 = [
 document.addEventListener('submit', function (event){
 	event.preventDefault();
 
-	removeErrors();
-	array.forEach(item => {
-        validate(item);
+	for (let i = 0; i < array.length; i++) {
 
-    });
+        validate(array[i]);
+    }
 });
 
 
@@ -210,8 +211,11 @@ function validate(item){
         item.parentElement.appendChild(errorText);
     }else{
         if (item.nextElementSibling) {
-            removeErrors();
+            if (item.nextElementSibling.classList.contains('error')) {
+                removeErrors();
+            }
         }
+
         addCaption(item);
     }
 }
@@ -232,3 +236,8 @@ function setAside(input) {
 function addCaption(input) {
     input.style.borderColor = 'green';
 }
+
+// function isEmail(e) {
+//     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//     return re.test(String(e).toLowerCase());
+// }
