@@ -1,0 +1,48 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    height: auto;
+
+}
+form>*{
+    width: 100%;
+    position: relative;
+}
+
+form>* .error {
+    position: absolute;
+    left: auto;
+    top: 0;
+    right: -200px;
+}
+input[type="text"] {
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;
+    width: 160px;
+ }
+ input[type="number"] {
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;
+    width: 160px;
+ }
+ button[type="submit"] {
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;
+    width: 140px;
+ }
+ textarea{
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;
+    width: 160px;
+ }
+select{
+    border: 1px solid black;
+    border-radius: 5px;
+    float: right;
+    width: 162px;
+}
