@@ -7,7 +7,6 @@ const ballY = height/2;
 const radius = ballWidth/2;
 const playerWidth = 10;
 const playerHeight = 70;
-
 let canvas = document.getElementById('canvas');
 canvas.width = width;
 canvas.height = height;
