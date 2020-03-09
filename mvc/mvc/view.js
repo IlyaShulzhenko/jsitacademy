@@ -215,7 +215,7 @@ class View {
 	digitalСlock.style.fontSize = '2rem';
 	digitalСlock.style.fontWeight = 'bold';
 	digitalСlock.style.textAnchor = 'middle';
-	svgRun()
+	
     }
 	svgRun(){    
 
