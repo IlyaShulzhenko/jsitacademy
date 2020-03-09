@@ -48,8 +48,8 @@ let ball = {
     radius: radius,
     speedX: 0,
     speedY: 0,
-    accelY: 1,
-    accelY: 1,
+//     accelY: 1,
+//     accelY: 1,
     color: 'red',
 
     create: function() {
@@ -154,9 +154,9 @@ function move() {
     if(player2.posY+player2.height>field.height ) {
         player2.posY=field.height-player2.height;
     }
-    ball.speedX+=ball.accelX
+//     ball.speedX+=ball.accelX
     ball.posX+=ball.speedX;
-    ball.speedY+=ball.accelY
+//     ball.speedY+=ball.accelY
     ball.posY+=ball.speedY;
 
     // достал ли мяч до края поля справа
