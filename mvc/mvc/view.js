@@ -18,7 +18,7 @@ class View {
         let hours = this.model.hours;
         let minutes = this.model.minutes;
         let seconds = this.model.seconds;
-        this.drawClock(h, m, s)
+        this.drawClock(hours, minutes, seconds)
 	this.svgRun()
     }
 
