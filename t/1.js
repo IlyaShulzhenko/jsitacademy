@@ -154,14 +154,15 @@ function move() {
     if(player2.posY+player2.height>field.height ) {
         player2.posY=field.height-player2.height;
     }
-    
+    ball.speedX+=ball.accelX
     ball.posX+=ball.speedX;
+    ball.speedY+=ball.accelY
     ball.posY+=ball.speedY;
 
     // достал ли мяч до края поля справа
     if(ball.posX+ball.radius>field.width ) {
         ball.speedX=0;
-        ball.speedY+=ball.accelY=2;        
+        ball.speedY=0;        
         ball.posX=field.width-ball.radius;
         player1.score++;
         player1.updateScore();
@@ -170,7 +171,7 @@ function move() {
      // достал ли мяч до края поля слева
     if(ball.posX-ball.radius<0 ) {
         ball.speedX=0;
-        ball.speedY+=ball.accelY=2;        
+        ball.speedY=0;        
         ball.posX=0+ball.radius;
         player2.score++;
         player2.updateScore();
@@ -190,13 +191,13 @@ function move() {
     // попал ли мяч во второго игрока
     if(ball.posX+ball.radius >= player2.posX && ball.posX <= player2.posX + player2.width ) {
         if(ball.posY >= player2.posY && ball.posY <= player2.posY + player2.height ) {
-            ball.speedX = -ball.speedX+=ball.accelX;
+            ball.speedX = -ball.speedX;
         }
     }
     // попал ли мяч в первого игрока
     if(ball.posX-ball.radius <= player1.posX+player1.width) {
         if( ball.posY+ball.radius >= player1.posY && ball.posY-ball.radius <= player1.posY + player1.height ) {
-            ball.speedX = -ball.speedX+=ball.accelX;
+            ball.speedX = -ball.speedX;
         }
     } 
 
