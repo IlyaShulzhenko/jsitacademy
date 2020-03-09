@@ -112,7 +112,7 @@ class View {
         }   
 
     }
-    svgClock(h, m, s){
+    svgClock(){
         const clockSvg = document.getElementById('svg');
         
         const xmls = 'http://www.w3.org/2000/svg';
@@ -168,6 +168,7 @@ class View {
                 text.style.fontSize = '40';
                 text.style.fontWeight = 'bold';
                 text.style.textAnchor = 'middle';
+	    	svgRun()
             }
         
         
