@@ -19,7 +19,10 @@ class View {
         let minutes = this.model.minutes;
         let seconds = this.model.seconds;
         this.drawClock(hours, minutes, seconds)
+	this.svgClock(h, m, s)  
+	this.
     }
+
 
     drawClock(h, m, s) {
         
@@ -219,10 +222,9 @@ class View {
         digitalСlock.style.fontSize = '2rem';
         digitalСlock.style.fontWeight = 'bold';
         digitalСlock.style.textAnchor = 'middle';
-        
-       
-        
-            
+    }
+	svgRun(){    
+                   
             let seconds = s * 6;
             let minutes = m * 6;
             let hours = (h + m / 60 + s * 3600) * 30;
@@ -243,7 +245,8 @@ class View {
     
                 document.getElementById("digital-clock").textContent = `${digitalHours} : ${digitalMinutes} : ${digitalSeconds}`;
         }    
-    }         
+    setInterval(svgRun(),1000);
+}
        
      
         
