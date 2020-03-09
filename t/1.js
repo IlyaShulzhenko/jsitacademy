@@ -48,8 +48,8 @@ let ball = {
     radius: radius,
     speedX: 0,
     speedY: 0,
-    accelX: 0.2,
-    accelY: 0.2,
+    accelX: 1.2,
+    accelY: 1.2,
     color: 'red',
 
     create: function() {
@@ -161,7 +161,7 @@ function move() {
     // достал ли мяч до края поля справа
     if(ball.posX+ball.radius>field.width ) {
         ball.speedX=0;
-        ball.speedY+=ball.accelY=0.2;        
+        ball.speedY+=ball.accelY=1.2;        
         ball.posX=field.width-ball.radius;
         player1.score++;
         player1.updateScore();
@@ -170,7 +170,7 @@ function move() {
      // достал ли мяч до края поля слева
     if(ball.posX-ball.radius<0 ) {
         ball.speedX=0;
-        ball.speedY+=ball.accelY=0.2;        
+        ball.speedY+=ball.accelY=1.2;        
         ball.posX=0+ball.radius;
         player2.score++;
         player2.updateScore();
