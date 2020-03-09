@@ -48,6 +48,7 @@ let ball = {
     radius: radius,
     speedX: 0,
     speedY: 0,
+    accelX: 0.2,
     color: 'red',
 
     create: function() {
