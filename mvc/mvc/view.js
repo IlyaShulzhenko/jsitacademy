@@ -245,8 +245,7 @@ class View {
     
                 document.getElementById("digital-clock").textContent = `${digitalHours} : ${digitalMinutes} : ${digitalSeconds}`;
         }    
-    setInterval(svgRun(),1000);
-}
+   }
        
      
         
