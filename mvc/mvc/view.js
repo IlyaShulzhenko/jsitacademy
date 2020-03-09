@@ -134,9 +134,6 @@ class View {
 
 	clockSvg.appendChild(clockStyle);
 
-
-
-
 	const bias = 30; 
 
         for (let i = 1; i <= 12; i++) {
@@ -218,6 +215,7 @@ class View {
 	digitalСlock.style.fontSize = '2rem';
 	digitalСlock.style.fontWeight = 'bold';
 	digitalСlock.style.textAnchor = 'middle';
+	svgRun()
     }
 	svgRun(){    
 
