@@ -48,7 +48,7 @@ let ball = {
     radius: radius,
     speedX: 0,
     speedY: 0,
-    accelX: 1.2
+    accelX: 1.2,
     accelY: 1.2,
     color: 'red',
 
