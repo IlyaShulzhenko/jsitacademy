@@ -162,6 +162,7 @@ function move() {
     if(ball.posX+ball.radius>field.width ) {
         ball.speedX=0;
         ball.speedY=0;
+        ball.accelY=0.2;
         ball.posX=field.width-ball.radius;
         player1.score++;
         player1.updateScore();
@@ -171,6 +172,7 @@ function move() {
     if(ball.posX-ball.radius<0 ) {
         ball.speedX=0;
         ball.speedY=0;
+        ball.accelY=0.2;
         ball.posX=0+ball.radius;
         player2.score++;
         player2.updateScore();
