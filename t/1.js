@@ -16,7 +16,7 @@ let ctx = canvas.getContext('2d');
 function clearAll() {
     ctx.clearRect(0,0,width,height);
 }
-
+//создание прямоугольника(игрового поля)
 function createRect(x,y,w,h,color) {
     ctx.beginPath();
     ctx.fillStyle = color;
@@ -24,7 +24,7 @@ function createRect(x,y,w,h,color) {
     ctx.strokeRect(x,y,w,h);
     ctx.closePath();
 }
-
+//круг
 function createCircle(x,y,r,color) {
     ctx.beginPath();
     ctx.fillStyle = color;
@@ -32,6 +32,7 @@ function createCircle(x,y,r,color) {
     ctx.fill();
     ctx.closePath();
 }
+//игровое поле
 let field = {
     width: width,
     height: height,
@@ -40,6 +41,7 @@ let field = {
         createRect(0,0,this.width,this.height,this.color)
     }
 }
+//мяч
 let ball = {
     posX: ballX,
     posY: ballY,
@@ -59,6 +61,7 @@ let ball = {
         this.speedY = Math.random(4,9);
     }
 }
+//создание первого игрока
 let player1 = {
     width: playerWidth,
     height: playerHeight,
@@ -77,6 +80,7 @@ let player1 = {
         counter.textContent = this.score;
     }
 }
+//создание второго игрока
 let player2= {
     width: playerWidth,
     height: playerHeight,
@@ -94,65 +98,65 @@ let player2= {
     }
 }
 function move() {
-  // Движение игроков
+  //задаем движение игроков
     player1.posY += player1.speed*2;
     player2.posY += player2.speed*2;
  
     document.onkeydown = function(e) {
-        // W-вверх
+     
         if(e.keyCode === 87) {
             player1.speed = -3;  
         }
-        // S-вниз
+       
         if(e.keyCode === 83) {
             player1.speed = 3;
         }
-        // Up-вверх
+       
         if(e.keyCode === 38) {
             player2.speed = -3;
         }
-        // Down-вниз
+        
         if(e.keyCode === 40) {
             player2.speed = 3;
         } 
     }
     document.onkeyup = function(e) {
-        // W-вверх
+       
         if(e.keyCode === 87) {
             player1.speed = 0;
         }
-        // S-вниз
+       
         if(e.keyCode === 83) {
             player1.speed = 0;
         }
-        // Up-вверх
+        
         if(e.keyCode === 38) {
             player2.speed = 0;
         }
-        // Down-вниз
+        
         if(e.keyCode === 40) {
             player2.speed = 0;
         } 
     }
-    // Вышел ли игрок выше стены?
+    //закончилось ли поле сверху
     if(player1.posY<=0) {
         player1.posY = 0;
     }
     if(player2.posY<=0) {
         player2.posY = 0;
     }
-    // Вышел ли игрок ниже стены?
+    //закончилось ли поле снизу
     if(player1.posY+player1.height>field.height ) {
         player1.posY=field.height-player1.height;
     }
     if(player2.posY+player2.height>field.height ) {
         player2.posY=field.height-player2.height;
     }
-    // Движение шарика
+    
     ball.posX+=ball.speedX;
     ball.posY+=ball.speedY;
 
-    // вылетел ли мяч правее стены?
+    // достал ли мяч до края поля справа
     if(ball.posX+ball.radius>field.width ) {
         ball.speedX=0;
         ball.speedY=0;
@@ -161,7 +165,7 @@ function move() {
         player1.updateScore();
         ball.run();
     }
-    // вылетел ли мяч левее стены?
+     // достал ли мяч до края поля слева
     if(ball.posX-ball.radius<0 ) {
         ball.speedX=0;
         ball.speedY=0;
@@ -170,24 +174,24 @@ function move() {
         player2.updateScore();
         ball.run();
     }
-    // вылетел ли мяч ниже пола?
+    // мяч по нижнему краю
     if(ball.posY+ball.radius>field.height ) {
         ball.speedY = -ball.speedY;
         ball.posY = field.height-ball.radius;
     }
 
-    // вылетел ли мяч выше пола?
+    // мяч поверхнему краю
     if(ball.posY-ball.radius<0) {
         ball.speedY = -ball.speedY;
         ball.posY = 0+ball.radius;
     }
-    // ударился ли мяч во 2ого игрока?
+    // попал ли мяч во второго игрока
     if(ball.posX+ball.radius >= player2.posX && ball.posX <= player2.posX + player2.width ) {
         if(ball.posY >= player2.posY && ball.posY <= player2.posY + player2.height ) {
             ball.speedX = -ball.speedX;
         }
     }
-    // ударился ли мяч о 1ого игрока?
+    // попал ли мяч в первого игрока
     if(ball.posX-ball.radius <= player1.posX+player1.width) {
         if( ball.posY+ball.radius >= player1.posY && ball.posY-ball.radius <= player1.posY + player1.height ) {
             ball.speedX = -ball.speedX;
