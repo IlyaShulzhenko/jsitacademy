@@ -195,7 +195,7 @@ function move() {
     // попал ли мяч в первого игрока
     if(ball.posX-ball.radius <= player1.posX+player1.width) {
         if( ball.posY+ball.radius >= player1.posY && ball.posY-ball.radius <= player1.posY + player1.height ) {
-            ball.speedX = -ball.speedX;
+            ball.speedX = -ball.speedX+ball.accelX;
         }
     } 
 
