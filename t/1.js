@@ -189,7 +189,7 @@ function move() {
     // попал ли мяч во второго игрока
     if(ball.posX+ball.radius >= player2.posX && ball.posX <= player2.posX + player2.width ) {
         if(ball.posY >= player2.posY && ball.posY <= player2.posY + player2.height ) {
-            ball.speedX = -ball.speedX;
+            ball.speedX = -ball.speedX-ball.accelX;
         }
     }
     // попал ли мяч в первого игрока
