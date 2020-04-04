@@ -113,6 +113,7 @@
     digitalСlock.style.textAnchor = 'middle';
 
     window.onload = function operation() {
+        displayTime();
         moveArrows();
         setInterval(moveArrows, 1000);
 
@@ -139,7 +140,7 @@
 
                 document.getElementById("digital-clock").textContent = `${digitalHours} : ${digitalMinutes} : ${digitalSeconds}`;
             }
-            displayTime();
+            
         }
     }
     }());
