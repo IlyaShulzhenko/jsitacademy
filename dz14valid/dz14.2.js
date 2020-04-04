@@ -59,18 +59,18 @@ let formDef1 = [
           } else if (element.kind === 'number') {
                 const input = renderInput('number', element);
 
-              newElement = renderLabel(element.name, element.label);
+              	newElement = renderLabel(element.name, element.label);
                 newElement.appendChild(input);
           } else if (element.kind === 'kombo') {
                 newElement = renderSelect(element);
           } else if (element.kind === 'radio') {
                 newElement = renderRadio(element);
           } else if (element.kind === 'check') {
-              newElement = renderCheckobox(element);
+              	newElement = renderCheckobox(element);
           } else if (element.kind === 'memo') {
-              newElement = renderTextArea(element);
+              	newElement = renderTextArea(element);
           } else if (element.kind === 'submit') {
-              newElement = renderSubmit(element);
+              	newElement = renderSubmit(element);
           }
 
           parentElment.appendChild(newElement);
@@ -95,10 +95,10 @@ let formDef1 = [
       let input = document.createElement('input');
 
         input.setAttribute('type', type);
-      input.setAttribute('name', element.name);
+      	input.setAttribute('name', element.name);
 
       if (element.kind === 'shorttext') {
-      input.setAttribute('maxlength', 30);
+      	input.setAttribute('maxlength', 30);
       }
 
       return input;
@@ -147,7 +147,7 @@ let formDef1 = [
 
   function renderCheckobox(element) {
       const labelElement = renderLabel(null, element.label);
-        const input = renderInput('checkbox', element.name);
+      const input = renderInput('checkbox', element.name);
 
       labelElement.appendChild(input);
 
@@ -158,11 +158,11 @@ let formDef1 = [
   function renderTextArea(elementObject) {
         let output = document.createElement('div');
         const label = renderLabel(elementObject.name, elementObject.label);
-      const textArea = document.createElement('textArea');
+      	const textArea = document.createElement('textArea');
 
         textArea.setAttribute('name', elementObject.name);
         output.appendChild(label);
-      output.appendChild(textArea);
+      	output.appendChild(textArea);
 
         return output;
   }
@@ -170,7 +170,7 @@ let formDef1 = [
   function renderSubmit(elementObject) {
       let submit = document.createElement('button');
 
-        submit.setAttribute('type', 'submit');
+      submit.setAttribute('type', 'submit');
       submit.textContent = elementObject.label;
 
       return submit;
