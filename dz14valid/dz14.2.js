@@ -203,7 +203,7 @@ document.addEventListener('submit', function (event){
 
 
 function validate(item){
-    if(item.value ==='' || checked){
+    if(item.value ==='' || this.checked){
         setAside(item);
         const errorText = document.createElement('div');
         errorText.textContent = 'Введите верное значение';
