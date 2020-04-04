@@ -113,7 +113,7 @@
     digitalСlock.style.textAnchor = 'middle';
 
     window.onload = function operation() {
-
+        moveArrows();
         setInterval(moveArrows, 1000);
 
         function moveArrows() {
