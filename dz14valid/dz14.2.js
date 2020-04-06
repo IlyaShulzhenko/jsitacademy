@@ -201,7 +201,7 @@ validates();
 
 
 function validate(item){
-  if(!item.value){
+  if(!item.value || value.checked){
       setAside(item);
       const errorText = document.createElement('div');
       errorText.textContent = 'Введите верное значение';
@@ -219,7 +219,7 @@ function validates(){
 
   array.forEach (item =>{
   
-  if(!item.value){
+  if(!item.value || value.checked){
     setAside(item);
 
     const errorText = document.createElement('div');
