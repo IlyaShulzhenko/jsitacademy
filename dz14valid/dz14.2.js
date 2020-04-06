@@ -219,7 +219,7 @@ function validates(){
 
   array.forEach (item =>{
   
-  if(!item.value){
+  if(item.value ===''){
     setAside(item);
 
     const errorText = document.createElement('div');
