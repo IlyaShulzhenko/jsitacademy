@@ -176,64 +176,56 @@ let formDef1 = [
       return submit;
   }
 
-  const inputTexts = document.querySelectorAll('input[type = "text"]');
-  const inputNumbers = document.querySelectorAll('input[type = "number"]');
-  const inputRadios = document.querySelector('input[type = "radio"]');
-  const checkboxs = document.querySelectorAll('input[type = "checkbox"]');
-  const selects = document.querySelector('select');
-  const textareas = document.querySelector('textarea');
+ const sitename = document.getElementsByClassName('sitename').sitename;
+const siteurl = document.getElementsByClassName('siteurl').siteurl;
+const visitors = document.getElementsByClassName('visitors').visitors;
+const email = document.getElementsByClassName('email').email;
+const votes = document.getElementsByClassName('votes').votes;
+const textarea = document.getElementsByClassName('textarea').description;
+const button = document.getElementsByClassName('submit');
+const form = document.getElementsByClassName('form');
+const input = document.getElementsByClassName('inputField');
 
-  let array = [...inputTexts, ...inputNumbers, inputRadios, ...checkboxs, selects,textareas];
-
-  array.forEach(item => {
-    item.addEventListener('blur', () => {
-
-        validate(item);
-    });
- });
+const arr =[sitename, siteurl, visitors, email, votes, textarea];
 
 document.addEventListener('submit', function (event){
 	event.preventDefault();
+	removeErrors();
+	validation();
+})
 
-	for (let i = 0; i < array.length; i++) {
-
-        	validate(array[i]);
-    }
+arr.forEach(item=>{
+	item.addEventListener('blur', function(){
+		removeErrors();
+		validation();
+	});
 });
 
-
-function validate(item){
-    if(item.value ==='' || this.checked || item.value === '1'){
-        setAside(item);
-        const errorText = document.createElement('div');
-        errorText.textContent = 'Введите верное значение';
-        errorText.className = 'error';
-        item.parentElement.appendChild(errorText);
-    }else{
-        if (item.nextElementSibling) {
-            if (item.nextElementSibling.classList.contains('error')) {
-                removeErrors();
-            }
-        }
-
-        addCaption(item);
-    }
-}
-
 function removeErrors(){
-	let errors = document.getElementsByClassName('error');
-
-	for(let i=0; i<errors.length; i++){
-    	errors[i].remove();
+	let errors = [...document.getElementsByClassName('error-text')];
+	for(let i=0; i<errors.length;i++){
+		errors[i].remove();
 	}
 }
+function validation(){
 
-function setAside(input) {
-    input.style.borderColor = 'red';
-
+	arr.forEach (item =>{		
+		if(!item.value){
+			setErrorFor(item);
+			const errorText = document.createElement('div');
+			errorText.innerHTML = "please fill";
+			errorText.className = 'error-text';
+			item.parentElement.appendChild(errorText);
+		}else{
+			setSuccessFor(item);
+		}
+	})
+	if (!isEmail(email.value)) {
+		setErrorFor(email);
+	}	
 }
-
-function addCaption(input) {
-    input.style.borderColor = 'green';
+function setErrorFor(input) {
+	input.style.borderColor = '#FF5964';
 }
-
+function setSuccessFor(input) {
+	input.style.borderColor = '#9EE279';
