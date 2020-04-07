@@ -139,8 +139,8 @@
 
                 document.getElementById("digital-clock").textContent = `${digitalHours} : ${digitalMinutes} : ${digitalSeconds}`;
             }  
-           
+           displayTime();  
         }
-            displayTime();  
+            
     }
     }());
