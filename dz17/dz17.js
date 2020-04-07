@@ -116,7 +116,7 @@
         moveArrows();      
         setInterval(moveArrows, 1000);
 
-        function moveArrows() {
+            function moveArrows() {
 
             const movement = new Date();
             let seconds = movement.getSeconds() * 6;
@@ -141,6 +141,6 @@
             }  
            
         }
-        displayTime();  
+            displayTime();  
     }
     }());
