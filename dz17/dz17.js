@@ -139,8 +139,8 @@
                 const digitalSeconds = (movement.getSeconds() < 10) ? ('0' + movement.getSeconds()) : (movement.getSeconds());
 
                 document.getElementById("digital-clock").textContent = `${digitalHours} : ${digitalMinutes} : ${digitalSeconds}`;
-            }
-       displayTime();     
+            }   
         }
+         displayTime(); 
     }
     }());
